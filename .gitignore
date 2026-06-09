@@ -1,0 +1,10 @@
+.env
+__pycache__/
+.DS_Store
+*.egg-info/
+build/
+dist/
+.venv/
+# crew runtime outputs
+report.md
+review_receipt.md

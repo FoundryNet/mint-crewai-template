@@ -1,0 +1,34 @@
+review_task:
+  description: >
+    Review the following change to {repo} (PR #{pr}):
+
+    ----- BEGIN CHANGE -----
+    {code}
+    ----- END CHANGE -----
+
+    Evaluate it for correctness, security, readability, and test coverage. Call out
+    concrete issues, each tagged with a severity of blocker, major, minor, or nit, and
+    a one-line suggested fix. Be specific and reference the relevant code.
+  expected_output: >
+    A concise markdown review: a bulleted list of findings (each line "- [severity]
+    issue — suggested fix"), followed by a final line exactly of the form
+    "Verdict: APPROVE" or "Verdict: APPROVE_WITH_COMMENTS" or "Verdict: REQUEST_CHANGES".
+  agent: code_reviewer
+
+attest_task:
+  description: >
+    A code review of {repo} PR #{pr} has just been completed (its result is in the
+    previous task's output). Use the mint_attest tool to record this completed review
+    on the MINT network as a tamper-evident, on-chain work record.
+
+    Call mint_attest with:
+      - work_type: "code_review"
+      - summary: a single line that includes the repository ({repo}), the PR number
+        (#{pr}), and the review verdict.
+    Then report what the tool returned.
+  expected_output: >
+    A short markdown block containing the attestation_id and the public verify URL
+    returned by the mint_attest tool. If the tool reports that attestation failed
+    (e.g. because MINT_API_KEY is not set), state that plainly instead of inventing a
+    result.
+  agent: review_attestor
