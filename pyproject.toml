@@ -2,7 +2,7 @@
 name = "verified_code_review"
 version = "0.1.0"
 description = "A CrewAI crew that reviews code changes and attests the completed work on-chain via MINT Protocol."
-authors = [{ name = "FoundryNet", email = "hello@foundrynet.io" }]
+authors = [{ name = "FoundryNet", email = "forge@foundrynet.io" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "crewai[tools]>=0.108.0",
